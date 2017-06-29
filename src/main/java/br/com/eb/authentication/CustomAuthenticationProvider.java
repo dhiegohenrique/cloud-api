@@ -11,6 +11,7 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 import br.com.eb.service.ILoginService;
+import br.com.eb.service.IPersonService;
 
 @Service
 @Configurable
@@ -18,6 +19,9 @@ public class CustomAuthenticationProvider implements AuthenticationProvider {
 	
 	@Autowired
 	private ILoginService loginService;
+	
+	@Autowired
+	private IPersonService personService;
 	
 	@Override
 	public Authentication authenticate(Authentication authentication) throws AuthenticationException {
@@ -34,7 +38,9 @@ public class CustomAuthenticationProvider implements AuthenticationProvider {
         	throw new BadCredentialsException("Senha inválida.");
         }
         
-		return new UsernamePasswordAuthenticationToken(username, password);
+		UsernamePasswordAuthenticationToken usernamePasswordAuthenticationToken = new UsernamePasswordAuthenticationToken(username, password);
+		usernamePasswordAuthenticationToken.setDetails(this.personService.getIdByUsername(username));
+		return usernamePasswordAuthenticationToken;
 	}
 	
 	@Override

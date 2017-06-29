@@ -1,5 +1,6 @@
 package br.com.eb.service;
 
+import java.io.IOException;
 import java.util.Calendar;
 import java.util.Collections;
 import java.util.Date;
@@ -31,7 +32,7 @@ public class TokenAuthenticationService {
 	@Autowired
 	private ICloudService cloudService;
 
-	public static void addAuthentication(HttpServletResponse response, String username) {
+	public static void addAuthentication(HttpServletResponse response, String username) throws IOException {
 		String JWT = generateToken(username);
 		response.addHeader(HEADER_STRING, TOKEN_PREFIX + " " + JWT);
 	}

@@ -47,8 +47,12 @@ public class PersonServiceImpl implements IPersonService {
 		
 		Person personById = this.getPersonById(person.getId());
 		personById.setName(person.getName());
-		personById.setPassword(person.getPassword());
-		this.insert(personById);
+		
+		if (!personById.getPassword().equals(person.getPassword())) {
+			personById.setPassword(this.encryptPassword(person.getPassword()));
+		}
+		
+		this.personRepository.save(personById);
 	}
 	
 	@Override
