@@ -1,0 +1,14 @@
+language: java
+jdk:
+- oraclejdk8
+notifications:
+  email: false
+services:
+- mongodb
+deploy:
+  provider: heroku
+  api_key:
+    secure: un1/oNawmNA3rByzQIN9LinKfp0H0HKvhWYdEd4f+vlLK2+7rpA5nD0C8u+W4zhtVS8B5Wdd0KqeIwWdJQVmyGhJjd4iC4MdOcOVyzvU+P61uuy/Vd6Yepqd+GsFwn20TplIUlQ7r90SRuoNNujeBubpnMU+vkJGZJwJMvvoP/LKK4LWeElv3WTj0FQFYZRgma/Z/UpwZvKCQbX9nPWvx6zhuDE8EvXj86KzDavuZd1X8jzhC2eURl8eQv5i7f/qBW/P+fLcF5ESBSLVphTVM4H5tVzj4mN8ZzQXyKAO+WbS1qPhp/PSM5Rr1aztVza4rHgKXRnmTYhvErqzLXR7VIl7s5E+500fUkQH4PZ6WzaCibKP98LbL4j4JfuupSYotcPdc03iMUtkf4pZwVkDWaGXh2TZtrJMVWGJiPck8cyg9OYhGB3n6yJy1P50XAFdI7PGKG6tWiz6zyqwmJPWsf00WMIHW1+SlAmb5U1nJDb3oYFw2wlL7D3+4snZldt0sC0vjMHAgVLOEOX96MUMnzBHaBKbMz/YZQRl03RdWyaruURyLb5H1b95aD+wqFbFl0lyv+sbbivEQX99891P6Z1Bg5KWN8UegUz2f5oGg6+tCqsBT3RLJHtlmJFsPnf3IollqLsmwZzUksfJ2Mh4gjS6LgUoRSGYZeEHI75vQrY=
+  app: eb-cloud-api
+  on:
+    repo: dhiegohenrique/cloud-api
