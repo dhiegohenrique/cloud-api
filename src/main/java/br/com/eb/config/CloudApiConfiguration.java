@@ -12,6 +12,7 @@ public class CloudApiConfiguration {
     public static PropertySourcesPlaceholderConfigurer propertyPlaceholderConfigurer() {
         String activeProfile = System.getProperty("spring.profiles.active", "dev");
         String propertiesFilename = "application." + activeProfile + ".properties";
+        System.err.println("propertiesFilename: " + propertiesFilename);
 		
 		final PropertySourcesPlaceholderConfigurer configurer = new PropertySourcesPlaceholderConfigurer();
 	    configurer.setLocation(new ClassPathResource(propertiesFilename));
