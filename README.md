@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/dhiegohenrique/suntech-back.svg?branch=master)](https://travis-ci.org/dhiegohenrique/suntech-back)
+[![Build Status](https://travis-ci.org/dhiegohenrique/cloud-api.svg?branch=master)](https://travis-ci.org/dhiegohenrique/cloud-api)
 
 API Rest que provê instâncias de cloud para as pessoas cadastradas. Estão disponíveis operações de CRUD e a autenticação ocorre por JSON Web Tokens.
 
