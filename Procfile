@@ -1,0 +1,1 @@
+web: `java $JAVA_OPTS -Dspring.profiles.active=prod -jar target/cloud-api-0.0.1-SNAPSHOT.jar`
