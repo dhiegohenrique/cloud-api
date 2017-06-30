@@ -26,8 +26,6 @@ public class CloudServiceImpl implements ICloudService {
 	
 	@Override
 	public Cloud insert(Cloud cloud) {
-		cloud.setActive(true);
-		
 		Date createDate = cloud.getCreateDate();
 		if (createDate == null) {
 			createDate = new Date();
@@ -56,7 +54,7 @@ public class CloudServiceImpl implements ICloudService {
 		cloudById.setName(cloud.getName());
 		cloudById.setOperationalSystem(cloud.getOperationalSystem());
 		cloudById.setUpdateDate(new Date());
-		this.insert(cloudById);
+		this.cloudRepository.save(cloudById);
 	}
 	
 	@Override
