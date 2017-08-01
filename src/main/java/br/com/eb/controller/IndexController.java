@@ -1,6 +1,5 @@
 package br.com.eb.controller;
 
-import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
@@ -8,7 +7,11 @@ import org.springframework.web.servlet.ModelAndView;
 import springfox.documentation.annotations.ApiIgnore;
 
 @RestController
-@CrossOrigin(origins = {"http://localhost:3001", "https://cloud-client.herokuapp.com"})
+//@CrossOrigin(origins = {
+//		"http://localhost:3001", 
+//		"http://localhost:4200", 
+//		"https://cloud-client.herokuapp.com"
+//		})
 @ApiIgnore
 public class IndexController {
 

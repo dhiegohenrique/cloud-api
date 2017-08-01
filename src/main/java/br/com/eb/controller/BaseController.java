@@ -5,11 +5,14 @@ import java.util.List;
 
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.ObjectError;
-import org.springframework.web.bind.annotation.CrossOrigin;
 
 import com.google.gson.Gson;
 
-@CrossOrigin(origins = {"http://localhost:3001", "https://cloud-client.herokuapp.com"})
+//@CrossOrigin(origins = {
+//		"http://localhost:3001", 
+//		"http://localhost:4200", 
+//		"https://cloud-client.herokuapp.com"
+//		})
 public abstract class BaseController {
 
 	protected String getJson(List<?> list) {

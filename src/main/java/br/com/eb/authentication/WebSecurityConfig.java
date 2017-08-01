@@ -40,22 +40,13 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	protected void configure(HttpSecurity httpSecurity) throws Exception {
 		httpSecurity.csrf().disable().authorizeRequests().antMatchers("/").permitAll()
 			.antMatchers(HttpMethod.POST, "/person").permitAll()
+			.antMatchers(HttpMethod.POST, "/token").permitAll()
 			.antMatchers("/person/{id}").authenticated()
 			.antMatchers("/cloud").authenticated()
 			.antMatchers("/cloud/*").authenticated()
 			.antMatchers(HttpMethod.POST, "/login").permitAll().and()
 			.addFilterBefore(new JWTLoginFilter("/login", this.authenticationManager()), UsernamePasswordAuthenticationFilter.class)
 			.addFilterBefore(this.jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class);
-		
-//		httpSecurity.cors().configurationSource(new CorsConfigurationSource() {
-//			
-//			@Override
-//			public CorsConfiguration getCorsConfiguration(HttpServletRequest request) {
-//				CorsConfiguration corsConfiguration = new CorsConfiguration();
-//				corsConfiguration.addAllowedOrigin("http://localhost:3001");
-//				return corsConfiguration;
-//			}
-//		});
 		httpSecurity.cors().configurationSource(this.corsConfigurationSource());
 	}
 	
@@ -65,20 +56,17 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         
         CorsConfiguration corsConfiguration = new CorsConfiguration();
         corsConfiguration.addAllowedOrigin("http://localhost:3001");
+        corsConfiguration.addAllowedOrigin("http://localhost:4200");
+        corsConfiguration.addAllowedOrigin("http://localhost:49152");
         corsConfiguration.addAllowedOrigin("https://cloud-client.herokuapp.com");
+        corsConfiguration.addAllowedOrigin("https://cloud-client-ang2.herokuapp.com");
         corsConfiguration.addAllowedMethod(HttpMethod.GET);
         corsConfiguration.addAllowedMethod(HttpMethod.POST);
         corsConfiguration.addAllowedMethod(HttpMethod.PUT);
         corsConfiguration.addAllowedMethod(HttpMethod.DELETE);
         corsConfiguration.addExposedHeader("Authorization");
         corsConfiguration.addExposedHeader("Location");
-//        corsConfiguration.addExposedHeader("Access-Control-Expose-Headers");
-//        corsConfiguration.setExposedHeaders(Arrays.asList("teste"));
-//        corsConfiguration.setAllowedHeaders(Arrays.asList("Authorization"));
-
-//        source.registerCorsConfiguration("/**", corsConfiguration);
 		source.registerCorsConfiguration("/**", corsConfiguration.applyPermitDefaultValues());
-//		source.registerCorsConfiguration("/login", corsConfiguration);
         return source;
     }
 
