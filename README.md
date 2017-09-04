@@ -9,7 +9,9 @@ Requisitos:
 	
 Para rodar:
 1) Importar como projeto Maven, clicar com o direito em CloudApiApplication e "Run as Java Application";
+2) A aplicação estará rodando em: http://localhost:3000
 
-A aplicação estará rodando em: http://localhost:3000
+Para rodar os testes:
+1) mvn test;
 
 A cada commit, serão realizados testes unitários no Travis. Se passarem, o deploy será realizado em https://eb-cloud-api.herokuapp.com/
