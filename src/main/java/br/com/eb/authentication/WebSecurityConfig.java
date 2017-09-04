@@ -3,6 +3,7 @@ package br.com.eb.authentication;
 import java.util.Arrays;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
@@ -32,6 +33,9 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	@Autowired
 	private JWTAuthenticationFilter jwtAuthenticationFilter;
 	
+	@Value("${allowed.origins}")
+	private String[] allowedOrigins;
+	
 	public WebSecurityConfig() {
 	    super(false);
 	}
@@ -55,11 +59,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
         
         CorsConfiguration corsConfiguration = new CorsConfiguration();
-        corsConfiguration.addAllowedOrigin("http://localhost:3001");
-        corsConfiguration.addAllowedOrigin("http://localhost:4200");
-        corsConfiguration.addAllowedOrigin("http://localhost:49152");
-        corsConfiguration.addAllowedOrigin("https://cloud-client.herokuapp.com");
-        corsConfiguration.addAllowedOrigin("https://cloud-client-ang2.herokuapp.com");
+        this.addAllowedOrigins(corsConfiguration);
         corsConfiguration.addAllowedMethod(HttpMethod.GET);
         corsConfiguration.addAllowedMethod(HttpMethod.POST);
         corsConfiguration.addAllowedMethod(HttpMethod.PUT);
@@ -69,6 +69,13 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 		source.registerCorsConfiguration("/**", corsConfiguration.applyPermitDefaultValues());
         return source;
     }
+
+	private void addAllowedOrigins(CorsConfiguration corsConfiguration) {
+		for (String origin : this.allowedOrigins) {
+			System.err.println("teste:" + origin);
+			corsConfiguration.addAllowedOrigin(origin);
+		}
+	}
 
 	@Override
 	protected AuthenticationManager authenticationManager() throws Exception {

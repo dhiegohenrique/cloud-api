@@ -7,11 +7,6 @@ import org.springframework.web.servlet.ModelAndView;
 import springfox.documentation.annotations.ApiIgnore;
 
 @RestController
-//@CrossOrigin(origins = {
-//		"http://localhost:3001", 
-//		"http://localhost:4200", 
-//		"https://cloud-client.herokuapp.com"
-//		})
 @ApiIgnore
 public class IndexController {
 

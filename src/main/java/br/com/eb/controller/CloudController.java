@@ -35,11 +35,6 @@ import io.swagger.annotations.ApiResponses;
 import io.swagger.annotations.ResponseHeader;
 
 @RestController
-//@CrossOrigin(origins = {
-//		"http://localhost:3001", 
-//		"http://localhost:4200", 
-//		"https://cloud-client.herokuapp.com"
-//		})
 @RequestMapping(value="/cloud")
 @Api(value = "Cloud", description = "Cloud")
 public class CloudController extends BaseController {

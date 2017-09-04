@@ -8,11 +8,6 @@ import org.springframework.validation.ObjectError;
 
 import com.google.gson.Gson;
 
-//@CrossOrigin(origins = {
-//		"http://localhost:3001", 
-//		"http://localhost:4200", 
-//		"https://cloud-client.herokuapp.com"
-//		})
 public abstract class BaseController {
 
 	protected String getJson(List<?> list) {

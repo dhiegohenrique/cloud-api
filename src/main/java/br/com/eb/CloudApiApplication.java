@@ -64,5 +64,5 @@ public class CloudApiApplication {
 	@Bean
 	public PasswordEncoder passwordEncoder() {
 		return new BCryptPasswordEncoder();
-	}
+	}	
 }
